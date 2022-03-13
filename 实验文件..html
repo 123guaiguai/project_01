@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实验文件</title>
+    <script src="../js/JsQuery_min.js"></script>
+    <script src="../js/template-web.js"></script>
+</head>
+<body>
+    <script id="user" type="text/html">
+        <h1>{{name}}</h1>
+        <h3>{{age}}</h3>
+        {{@ text}}
+        {{if flag===1}}
+        flag=1;
+        {{/if}}
+        <ul>
+        {{each hobby}}
+        <li>索引是:{{$index}},{{$value}}</li>
+        {{/each}}
+        </ul>
+    </script>
+    <script>
+        var data={
+            name:'高琪',
+            age:19,
+            text:'<h3>hao</h3>',
+            flag:1,
+            hobby:['你好','我好','大家好']
+        }
+        var str=template('user',data);
+        $('body').html(str);
+    </script>
+</body>
+
+</html>

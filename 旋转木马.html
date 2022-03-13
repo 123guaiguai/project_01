@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>旋转木马</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            perspective: 500px;
+        }
+        @keyframes rotate {
+            0% {
+                transform: rotateY(0);
+            }
+            100% {
+                transform: rotateY(360deg);
+            }
+        }
+        .box {
+            width: 115px;
+            height: 337px;
+            position: relative;
+            margin: 150px auto;
+            transform-style: preserve-3d;
+            animation: rotate 10s linear infinite;
+        }
+
+        .box:hover{
+            animation-play-state: paused;
+        }
+        .box div {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left:0;
+            top:0;
+        }
+
+        .box div:nth-child(1) {
+            background: url(../images/物语18.jpg) no-repeat;
+            transform: translateZ(100px);
+            background-size: 100% 100%;
+        }
+
+        .box div:nth-child(2) {
+            background: url(../images/物语16.jpg) no-repeat;
+            transform: rotateY(60deg) translateZ(100px);
+            background-size: 100% 100%;
+        }
+
+        .box div:nth-child(3) {
+            background: url(../images/物语15.JPEG) no-repeat;
+            transform: rotateY(120deg) translateZ(100px);
+            background-size: 100% 100%;
+        }
+
+        .box div:nth-child(4) {
+
+            background: url(../images/物语14.JPEG) no-repeat;
+            transform: rotateY(180deg)translateZ(100px);
+            background-size: 100% 100%;
+        }
+
+        .box div:nth-child(5) {
+            background: url(../images/物语13.JPEG) no-repeat;
+            transform: rotateY(240deg)translateZ(100px) ;
+            background-size: 100% 100%;
+        }
+
+        .box div:nth-child(6) {
+            background: url(../images/物语12.jpg) no-repeat;
+            transform: rotateY(300deg)translateZ(100px);
+            background-size: 100% 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</body>
+
+</html>

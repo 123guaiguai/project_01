@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>奔跑的熊</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .show{
+            position:relative;
+            width:100%;
+            height:400px;
+            margin-top:200px;
+        }
+        .mt1{
+            position:absolute;
+            width:100%;
+            height:290px;
+            bottom:0;
+            background: url(../images/CSS3进阶素材-包含小熊动画/bg1.png) no-repeat;
+            animation: mtmove 5s linear infinite ;
+            z-index:1;
+        }
+        .mt2{
+            position:absolute;
+            width:100%;
+            height:360px;
+            bottom:0;
+            background: url(../images/CSS3进阶素材-包含小熊动画/bg2.png) no-repeat;
+            animation: mtmove 5s linear infinite ;
+            opacity: .5;
+        }
+        @keyframes run {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: -1400px 0;
+            }
+        }
+        @keyframes arrive{
+            0%{
+                left:0;
+            }
+            100%{
+                left:50%;
+                transform: translateX(-50%);
+            }
+        }
+        @keyframes mtmove{
+            0%{
+                background-position: 0 0;
+            }
+            100%{
+                background-position:100% 0;
+            }
+        }
+        .bear { 
+            z-index:2;
+            position: absolute;
+            bottom:0;
+            width: 200px;
+            height: 100px;
+            background: url(../images/CSS3进阶素材-包含小熊动画/bear.png) no-repeat;
+            animation: run .8s steps(7) infinite,arrive 5s ease forwards;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="show">
+    <div class="mt1"></div>
+    <div class="mt2"></div>
+    <div class="bear"></div>
+    </div>
+</body>
+
+</html>

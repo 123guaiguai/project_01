@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>淡入淡出轮播图</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+
+        .wrap {
+            width: 500px;
+            height: 300px;
+            position: relative;
+            perspective: 500px;
+            margin: 100px auto;
+        }
+
+        .wrap-ul {
+            width: 500px;
+            height: 300px;
+            position: relative;
+            list-style: none;
+        }
+
+        .wrap-ul li {
+            width: 500px;
+            height: 300px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .wrap-ul img {
+            width: 500px;
+            height: 300px;
+            transition: all 1s ease 0s;
+            opacity: 0;
+            display: inline-block;
+        }
+
+        .cc img {
+            opacity: 1;
+        }
+
+        .wrap span {
+            transition: all .5s ease 0s;
+            width: 40px;
+            height: 70px;
+            font-size: 50px;
+            text-align: center;
+            background-color: rgba(0, 0, 255, .5);
+            position: absolute;
+            left: -60px;
+            top: 40%;
+            cursor: pointer;
+            z-index: 11;
+            opacity: .4;
+        }
+
+        .wrap span:hover {
+            opacity: 1;
+        }
+
+        .wrap .right {
+            right: -60px;
+            left: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <ul class="wrap-ul">
+            <li class="bb"><img src="../images/物语2.jpg" alt=""></li>
+            <li class="bb"><img src="../images/物语·1.jpg" alt=""></li>
+            <li class="cc"><img src="../images/物语8.jpg" alt=""></li>
+            <li class="bb"><img src="../images/物语5.jpg" alt=""></li>
+            <li class="bb"><img src="../images/物语4.jpg" alt=""></li>
+        </ul>
+        <span class="left">&lt;</span>
+        <span class="right">&gt;</span>
+    </div>
+    <script>
+        var Classes = ["bb", "bb", "cc", "bb", "bb"];
+        var ul = document.querySelector('.swap-ul');
+        var lis = document.querySelectorAll('li');
+        var left = document.querySelector('.left');
+        var right = document.querySelector('.right');
+        var wrap = document.querySelector('.wrap');
+        function toleft() {
+                var Last_class = Classes.pop();
+                Classes.unshift(Last_class);
+                for (var i = 0; i < lis.length; i++) {
+                    lis[i].className = Classes[i];
+                }
+            }
+        function toright() {
+                var first_class = Classes.shift();
+                Classes.push(first_class);
+                for (var i = 0; i < lis.length; i++) {
+                    lis[i].className = Classes[i];
+                }
+            }
+        left.addEventListener('click',toleft);
+        right.addEventListener('click',toright);
+        var timer = setInterval(toright, 2000);
+        wrap.addEventListener('mouseenter', function () {
+            clearInterval(timer);
+            timer = null;
+        })
+        wrap.addEventListener('mouseleave', function () {
+            timer = setInterval(toright, 2000);
+        })
+    </script>
+</body>
+
+</html>

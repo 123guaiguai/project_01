@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../聊天机器人/聊天机器人js/jquery-1.12.4.min.js"></script>
+    <script src="../聊天机器人/聊天机器人js/jquery-ui.min.js"></script>
+    <script src="../聊天机器人/聊天机器人js/jquery.mousewheel.js"></script>
+    <script src="../聊天机器人/聊天机器人js/scroll.js"></script>
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_2971656_8bn3s8laz9c.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            width: 100vw;
+            height: 100vh;
+            background: url(../images/星流.webp) no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'icomoon';
+        }
+
+        .wrap {
+            width: 700px;
+            height: 500px;
+            border: 1px solid rgba(255, 255, 255, .3);
+            backdrop-filter: blur(5px);
+            border-radius: 20px;
+            box-shadow: -1px 1px 1px 1px rgba(0, 0, 0, .3);
+            overflow: hidden;
+            display: flex;
+        }
+
+        .left-menu {
+            width: 100px;
+            height: 100%;
+            border-radius: 20px;
+            background-color: rgba(0, 0, 0, .6);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: all .5s;
+        }
+
+        .header {
+            width: 200px;
+            height: 100px;
+            margin-top: 20px;
+            border: 1px solid transparent;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .header-left {
+            width: 100px;
+            height: 100%;
+            display: inline-block;
+            border: 1px solid transparent;
+        }
+
+        .header-img {
+            width: 70px;
+            height: 70px;
+            border: 4px solid rgba(255, 255, 255, .3);
+            border-radius: 50%;
+            margin-left: 12px;
+            object-fit: cover;
+        }
+
+        .header-img img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+
+        .header-btn {
+            width: 70px;
+            height: 20px;
+            margin-top: 5px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-left: 12px;
+        }
+
+        .header-btn span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: aquamarine;
+        }
+
+        .header-btn span:nth-child(2) {
+            background-color: rgb(211, 27, 51);
+        }
+
+        .header-btn span:nth-child(3) {
+            background-color: rgb(219, 241, 20);
+        }
+
+        .header-right {
+            width: 150px; 
+            height: 100%;
+            color:rgb(46, 118, 180);
+            margin-left:15px;
+            opacity: 0;
+            transition: all .3s;
+        }
+        .left-menu:hover{
+            width:300px;
+        }
+        .left-menu:hover .line{
+            width:200px;
+        }
+        .left-menu:hover .header-right{
+            opacity: 1;
+        }
+        .left-menu:hover .body-infro{
+            opacity: 1;
+        }
+        h1{
+            margin-bottom:5px;
+            font-family:"STXingkai";
+        }
+        h3{
+            font-family: "Berlin Sans FB";
+        }
+        .line{
+            width:80px;
+            height:2px;
+            border-radius: 1px;
+            background-color: rgba(255, 255, 255, .3);
+            margin:20px 12px 20px 12px;
+            transition: all .3s;
+        }
+        .body-item{
+            height:40px;
+            position: relative;
+            transition: all .3s;
+        }
+        .body-item::before{
+            content: '';
+            width:4px;
+            height:100%;
+            position: absolute;
+            top:0;
+            left:0px;
+            background-color: rgb(150, 18, 18);
+            border-radius: 2px;
+            opacity: 0;
+            transition: all .3s;
+        }
+        .body-item:hover{
+            background-color:rgba(255, 255, 255, .3);
+        }
+        .body-item:hover .iconfont{
+            color:rgb(40, 226, 118)
+        }
+        .body-item:hover::before{
+            opacity: 1;
+        }
+        .body-item:hover .body-infro{
+            color:cadetblue;
+        }
+        .iconfont{
+            position: absolute;
+            left:30px;
+            top:2px;
+            font-size:30px;
+            color:antiquewhite;
+        }
+        .footer{
+            width:80px;
+            height:80px;
+            margin-left:12px;
+            background-color: rgba(0, 0, 0, .6);
+            border-radius: 20px;
+            position: relative;
+        }
+        .footer .iconfont{
+            position: absolute;
+            top:25px;
+            left:25px;
+            transition: all .8s;
+        }
+        .footer:hover{
+            background-color: rgba(255, 255, 255, .3);
+        }
+        .footer:hover .iconfont{
+            color:cadetblue;
+        }
+        .body-infro{
+            position: absolute;
+            color:white;
+            font-size:17px;
+            font-family:"STXingkai";
+            top:9px;
+            left:100px;
+            overflow: hidden;
+            white-space: nowrap;
+            transition: all .3s;
+            opacity: 0;
+        }
+        .right-list{
+            height:100%;
+            flex-grow: 1;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .top{
+            position: relative;
+            height:80px;
+            border:1px solid red;
+            background: linear-gradient(90deg, rgba(246, 60, 47, 0.8), rgba(128, 58, 242, 0.8));
+        }
+        .top-name{
+            position: absolute;
+            font-family:"STXingkai";
+            font-size:25px;
+            color:azure;
+            top:27px;
+            left:50px;
+        }
+        .top-img{
+            position: absolute;
+            width:70px;
+            height:70px;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, .3);
+            top:2px;
+            right:20px;
+            object-fit: cover;
+        }
+        .top-img img{
+            width:100%;
+            height:100%;
+            border-radius: 50%;
+        }
+        .middle{
+            height:330px;
+            border:1px solid rgba(255, 255, 255, .3);
+            border-radius: 10px;
+        }
+        .floor{
+            margin-top:5px;
+            height:80px;
+            border:1px solid white;
+            border-radius: 10px;
+            background-color: azure;
+            opacity: .5;
+            position: relative;
+        }
+        .floor-img{
+            position: absolute;
+            left:10px;
+            top:5px;
+            width:70px;
+            height:70px;
+            border-radius: 50%;
+            border:4px solid rgba(95, 9, 9, 0.8);
+            object-fit: cover;
+        }
+        .floor-img img{
+            width:100%;
+            height:100%;
+            border-radius: 50%;
+        }
+        .text{
+            position: absolute;
+            left:160px;
+            top:20px;
+            width:300px;
+            height:40px;
+            border-radius: 20px;
+            background-color: hsl(0, 4%, 95%);
+            outline: none;
+            padding:20px;
+        }
+        .submit{
+            position: absolute;
+            width:70px;
+            height:40px;
+            right:10px;
+            top:20px;
+            border-radius: 10px;
+            text-align: center;
+            line-height: 40px;
+            background-color: rgba(254, 150, 151);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="left-menu">
+            <div class="header">
+                <div class="header-left">
+                    <div class="header-img"><img src="../images/物语18.jpg" alt=""></div>
+                    <div class="header-btn"> <span></span> <span></span> <span></span></div>
+                </div>
+                <div class="header-right">
+                    <h1>高琪</h1>
+                    <h3>Good Day</h3>
+                </div>
+            </div>
+            <div class="line"></div>
+            <div class="body">
+                <div class="body-item">
+                    <span class="iconfont icon-weixin1"></span>
+                    <span class="body-infro">微信：</span>
+                </div>
+                <div class="body-item">
+                    <span class="iconfont icon-QQ"></span>
+                    <span class="body-infro">QQ:1952664675</span>
+                </div>
+                <div class="body-item">
+                    <span class="iconfont icon-email"></span>
+                    <span class="body-infro">邮箱：1952664675@qq.com</span>
+                </div>
+                <div class="body-item">
+                    <span class="iconfont icon-dianhua1"></span>
+                    <span class="body-infro">电话：18158806760</span>
+                </div>
+                <div class="body-item">
+                    <span class="iconfont icon-home"></span>
+                    <span class="body-infro">住址：成都电子科技大学</span>
+                </div>
+            </div>
+            <div class="line"></div>
+            <div class="footer">
+                <div class="footer-item">
+                    <span class="iconfont icon-yingyong1"></span>
+                    <span class="footer-infro"></span>
+                </div>
+            </div>
+        </div>
+        <div class="right-list">
+            <div class="top">
+                <span class="top-name">小冰同学</span>
+                <span class="top-img"><img src="../images/物语14.JPEG" alt=""></span>
+            </div>
+            <div class="middle"></div>
+            <div class="floor">
+                <span class="floor-img"><img src="../images/下行星.jpg" alt=""></span>
+                <input type="text" placeholder="说点什么吧..." class="text">
+                <input type="subit" class="submit" value="发送">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

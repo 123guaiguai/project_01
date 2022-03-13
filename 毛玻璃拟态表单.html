@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>毛玻璃拟态表单</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            user-select: none;
+            background: url(../images/对开本.jpg) no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        form {
+            display: flex;
+            flex-flow: column wrap;
+            align-items: center;
+            width: 400px;
+            height: 400px;
+            border-radius: 20px;
+            background-color: rgba(255, 255, 255, .3);
+            backdrop-filter: blur(3px);
+            border-left: 2px solid rgba(255, 255, 255, .3);
+            border-top: 2px solid rgba(255, 255, 255, .3);
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, .2);
+        }
+
+        .tt {
+            margin: 20px;
+            font-weight: 400;
+            font-size: 88px;
+            font-family: "Berlin Sans FB";
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
+            opacity: .9;
+        }
+
+        .input {
+            outline: none;
+            border: none;
+            width: 80%;
+            font-size: 22px;
+            padding: 10px;
+            margin-bottom: 32px;
+            border-radius: 16px;
+            background-color: transparent;
+            backdrop-filter: blur(3px);
+            border-left: 2px solid rgba(255, 255, 255, .3);
+            border-top: 2px solid rgba(255, 255, 255, .3);
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, .2);
+            font-family: "Berlin Sans FB";
+            color: rgba(85, 3, 48, 0.2);
+            text-align: center;
+        }
+        ::placeholder{
+            color:white;
+            opacity: .9;
+            font-size:25px;
+        }
+        .btn{
+            color:white;
+            width:50%;
+            border-radius: 20px;
+            transition: all .3s;
+        }
+        .btn:hover{
+            background-color:rgba(85, 3, 48, 0.2);
+            color:cadetblue;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="">
+        <div class="tt">BOOK</div>
+        <input class="input" placeholder="用户名" type="text">
+        <input class="input" placeholder="密码" type="password">
+        <input class="input btn" type="submit" value="登陆">
+    </form>
+</body>
+
+</html>

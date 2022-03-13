@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态表单</title>
+    <script src="../js/JsQuery_min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Times New Roman",Times,serif;
+        }
+        @keyframes change{
+        50%{
+            font-size:34px;
+            color:#433197;
+        }
+        100%{
+            font-size:26px;
+            color: #70b4e3;
+        }
+        }
+        .wrap {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: linear-gradient(to right bottom, #093f90, #2b3995, #433197, #5a2596, #6f0b92);
+        }
+
+        form {
+            width: 900px;
+            height: 560px;
+            display: flex;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, .1);
+        }
+
+        .left {
+            width: 500px;
+            height: 560px;
+        }
+
+        .left img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .right {
+            width: 400px;
+            height: 560px;
+            background-color: rgba(255, 255, 255, .9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .right-icon {
+            width: 70%;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 26px;
+            color: #70b4e3;
+            font-weight: 400;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            transition: all .3s;
+            font-size: 12px;
+            font-weight: 400;
+            color: #70b4e3;
+            padding: 20px 0;
+        }
+
+        .text {
+            transition: all .3s;
+            width: 100%;
+            outline: none;
+            border: none;
+            border-bottom: 1px solid #70b4e3;
+            color: #70b4e3;
+            background-color: rgba(0, 0, 0, 0);
+        }
+
+        .btn {
+            outline: none;
+            width: 100%;
+            height: 40px;
+            border-radius: 20px;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 50px;
+            background-image: linear-gradient(120deg, #76daec 0%, #c5a8de 100%);
+
+        }
+
+        .btn:hover {
+            box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+        }
+    </style>
+    <script>
+        $(function () {
+            $('.text').focus(function () {
+                $(this).css({
+                    "border-bottom-color": "#5c0e18",
+                    "border-bottom-width": "3px",
+                    "transform": "scale(1.2)",
+                    "border-radius":"2px",
+                })
+                $(this).prev('h3').css({
+                    "font-size": "17px",
+                    "color": "#c5a8de",
+                })
+            })
+            $('.text').blur(function () {
+                $(this).css({
+                    "border-bottom-color": "#70b4e3",
+                    "border-bottom-width": "1px",
+                    "transform": "scale(1)",
+                })
+                $(this).prev('h3').css({
+                    "font-size": "12px",
+                    "color": "#70b4e3",
+                })
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <div class="wrap">
+        <form>
+            <div class="left">
+                <img src="../images/部分星空.jpg" alt="">
+            </div>
+            <div class="right">
+                <div class="right-icon">
+                    <h1>NEW HERE SIGN UP</h1>
+                    <h3>NAME</h3>
+                    <input class="text" type="text">
+                    <h3>EMAIL</h3>
+                    <input class="text" type="text">
+                    <h3>PASSWORD</h3>
+                    <input class="text" type="password">
+                    <input class="btn" type="submit" value="LOGIN">
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

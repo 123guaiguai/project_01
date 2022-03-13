@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>雨幕诗帘</title>
+    <script src="../js/JsQuery_min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            perspective: 1000px;
+        }
+
+        body,
+        html {
+            width: 100%;
+            height: 100vh;
+            user-select: none;
+            background-image: url(../images/beautiful-lotus-flower-water-after-rain-garden_34102-176.webp.jpg);
+            background-size: cover;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 70%;
+            height: 95%;
+            border: 4px solid rgba(255, 255, 255, .4);
+            backdrop-filter: blur(10px);
+            border-radius: 40px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .4), 10px 20px 20px rgba(0, 0, 0, .5);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-content: space-around;
+            transform-style: preserve-3d;
+            perspective: 400px;
+        }
+
+        .chapter {
+            width: 250px;
+            height: 350px;
+            backdrop-filter: blur(10px);
+            border-radius: 40px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .4), 5px 5px 10px rgba(0, 0, 0, .5);
+            margin-right: 30px;
+            margin-left: 30px;
+            padding: 35px;
+            position: relative;
+            transition: all .3s;
+            border:1px solid #ccc;
+        }
+        .chapter:hover{
+            transform: translate(7px,-7px);
+            box-shadow: 0 0 10px rgba(0, 0, 0, .4), 7px 7px 14px rgba(0, 0, 0, .5);;
+        }
+
+        .btn{
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            backdrop-filter: blur(15px);
+            box-shadow: 4px 0 5px rgba(123, 23, 45, .5),-3px 2px 3px rgba(158, 67, 87, 0.5);
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            line-height: 40px;
+            color:white;
+            opacity: .4;
+            font-weight: 400;
+            font-size:18px;
+            font-family:"STXingkai";
+            transition: all .3s;
+        }
+        .chapter p:nth-child(1){
+            font-size: 15px;
+            font-family: "STXingkai";
+            text-indent: 2em;
+            color:antiquewhite;
+            opacity: .8;
+            transition: all .3s;
+        }
+    </style>
+    <script>
+        $(function(){
+            $('.btn').click(function(){
+                var n=0;
+                if(n==0)
+                {
+                    $(this).css({
+                background:"rgba(123, 23, 45)",
+                color:"rgba(34, 2, 9)",
+                }).siblings('p').css({
+                    "opacity":".8",
+                    "transition":"all 1s",
+                })
+                $(this).parent().siblings('.chapter').children('.btn').css({
+                    background:"none",
+                    color:"rgba(255,255,255,.4)"
+                })
+                $(this).parent().css({
+                    background:"cadetblue",
+                    opacity:".8",
+                }).siblings().css({
+                    background:"none",
+                    color:"rgba(255,255,255,.4)"
+                })
+                n++;
+                }else if(n==1){
+                    $(this).siblings('p').css({
+                        "transition":"all 1s",
+                        "opacity":"0",
+                    })
+                    n=0;
+                }
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="chapter">
+            <p>
+                举头西北浮云，倚天万里须长剑。人言此地，夜深长见，斗牛光焰。我觉山高，潭空水冷，月明星淡。待燃犀下看，凭栏却怕，风雷怒，鱼龙惨。
+　　峡束苍江对起，过危楼，欲飞还敛。元龙老矣！不妨高卧，冰壶凉簟。千古兴亡，百年悲笑，一时登览。问何人又卸，片帆沙岸，系斜阳缆。
+            </p>
+            <p></p>
+            <div class="btn">点秋</div>
+        </div>
+        <div class="chapter">
+            <p>
+                洞庭青草，近中秋、更无一点风色。玉界琼田三万顷，著我扁舟一叶。素月分辉，银河共影，表里俱澄澈。怡然心会，妙处难与君说。
+                <br>　　应念岭海经年，孤光自照，肝胆皆冰雪。短发萧骚襟袖冷，稳泛沧浪空阔。尽挹西江，细斟北斗，万象为宾客。扣舷独啸，不知今夕何夕。
+            </p>
+            <p></p>
+            <div class="btn">点秋</div>
+        </div>
+        <div class="chapter">
+            <p>
+                蜗角虚名，蝇头微利，算来著甚干忙。事皆前定，谁弱又谁强。且趁闲身未老，尽放我、些子疏狂。百年里，浑教是醉，三万六千场。
+<br>　　思量。能几许，忧愁风雨，一半相妨，又何须，抵死说短论长。幸对清风皓月，苔茵展、云幕高张。江南好，千钟美酒，一曲满庭芳。
+            </p>
+            <p></p>
+            <div class="btn">点秋</div>
+        </div>
+        <div class="chapter">
+            <p>
+                山寺微茫背夕曛，鸟飞不到半山昏。上方孤磬定行云。<br>　　试上高峰窥皓月，偶开天眼觑红尘。可怜身是眼中人。
+            </p>
+            <p></p>
+            <div class="btn">点秋</div>
+        </div>
+        <div class="chapter">
+            <p>
+                平林漠漠烟如织，寒山一带伤心碧。暝色入高楼，有人楼上愁。
+                <br>　　玉梯空伫立，宿鸟归飞急。何处是归程，长亭连短亭。
+            </p>
+            <p></p>
+            <div class="btn">点秋</div>
+        </div>
+        <div class="chapter">
+            <p>
+                长安古道马迟迟，高柳乱蝉嘶。夕阳岛外，秋风原上，目断四天垂<br>
+                　　归云一去无踪迹，何处是前期？狎兴生疏，酒徒萧索，不似少年时。
+            </p>
+            <p></p>
+            <div class="btn">点秋</div>
+        </div>
+    </div> 
+</body>
+
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>切换注册与登陆表单</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        body,html{
+            height:100vh;
+            background-image:url(../images/星与山.jpg) ;
+            background-size: cover;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container{
+            position: relative;
+            width:600px;
+            height:300px;
+        }
+        .shiftbtn1,
+        .shiftbtn2{
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-50%);
+            width:180px;
+            height:30px;
+            background-image: linear-gradient(90deg, rgba(3, 93, 162) 0%, rgba(2, 128, 146) 74%);
+            text-align: center;
+            line-height: 30px;
+            border-radius: 20px;
+            color:white;
+            cursor: pointer;
+            transition: all .5s;
+        }
+        .shiftbtn1{
+            opacity: 0;
+        }
+        .mask{
+            background-color: rgba(3, 93, 162);
+            position: relative;
+            width:50%;
+            height:100%;
+            float:left;
+            border-bottom-left-radius: 20px;
+            border-top-left-radius: 20px;
+            box-shadow:-1px 1px 1px 1px rgba(255,255,255,.3);
+            transition: all .5s;
+            background: url(../images/星与山.jpg) no-repeat center;
+            background-position: -50%;
+            overflow: hidden;
+        }
+        .form{
+            position: relative;
+            width:50%;
+            height:100%;
+            float:right;
+            background-color: rgba(231, 230, 232);
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+            transition: all .5s;
+            z-index:5;
+        }
+        .signup,
+        .signin{
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform:translate(-50%,-50%);
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            width:100%;
+            height:100%;
+            transition: all .5s;
+            opacity: 1;
+        }
+        .signin{
+            opacity: 0;
+        }
+        .header{
+            margin:25px;
+            font-size:18px;
+            font-weight: 300;
+        }
+        .text{
+            width:70%;
+            height:35px;
+            margin-bottom:15px;
+            padding-left:10px;
+            border:none;
+        }
+        .remind{
+            margin:10px;
+            font-size:16px;
+            font-weight: 300;
+        }
+        .btn{
+            width:40%;
+            height:30px;
+            background-image: linear-gradient(90deg, rgba(3, 93, 162) 0%, rgba(2, 128, 146) 74%);
+            text-align: center;
+            line-height: 30px;
+            border-radius: 20px;
+            color:white;
+            cursor: pointer;
+        }
+        .translateright{
+            transform: translateX(100%);
+            border-radius: 0;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+            box-shadow: 1px 1px 1px 1px rgba(255,255,255,.3);
+        }
+        .translateleft{
+            transform: translateX(-100%);
+            border-radius: 0;
+            border-bottom-left-radius: 20px;
+            border-top-left-radius: 20px;
+        }
+    </style>
+    <script>
+        window.addEventListener('load',function(){
+            const shiftbtn1=document.querySelector('.shiftbtn1');
+            const shiftbtn2=document.querySelector('.shiftbtn2');
+            const form=document.querySelector('.form');
+            const mask=document.querySelector('.mask');
+            const signup=document.querySelector('.signup');
+            const signin=document.querySelector('.signin');
+            shiftbtn2.addEventListener('click',function(){
+                mask.className='mask translateright';
+                form.className='form translateleft';
+                this.style. opacity='0';
+                this.style.zIndex='-1';
+                shiftbtn1.style.opacity='1';
+                signup.style.opacity='0';
+                signin.style.opacity='1';
+            })
+            console.log(shiftbtn1);
+            shiftbtn1.addEventListener('click',function(){
+                mask.className='mask';
+                form.className='form';
+                shiftbtn2.style.zIndex='1';
+                shiftbtn2.style.opacity='1';
+                signin.style.opacity='0';
+                signup.style.opacity='1';
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="mask">
+            <div class="shiftbtn1">已有帐号,直接登陆</div>
+            <div class="shiftbtn2">没有账号,点击注册</div>
+        </div>
+        <div class="form">
+            <div class="signup">
+                <div class="header">登陆账号</div>
+                <input type="text" placeholder="E-mail" class="text">
+                <input type="password" placeholder="Password" class="text">
+                <div class="remind">忘记密码?</div>
+                <div class="btn btn1">点击登陆</div>
+            </div>
+            <div class="signin">
+                <div class="header">注册账号</div>
+                <input type="text" placeholder="Username" class="text"
+                ><input type="text" placeholder="E-mail" class="text">
+                <input type="password" placeholder="Password" class="text">
+                <div class="btn btn2">点击注册</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

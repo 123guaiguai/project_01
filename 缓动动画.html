@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>缓动动画</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+    <script>
+        window.addEventListener('load', function () {
+            var btns = document.querySelectorAll('button');
+            var div = document.querySelector('div');
+            function animate(obj, target, callback) {
+                if (obj.offsetLeft == target) {
+                    clearInterval(obj.timer);
+                    callback && callback();
+                }
+                clearInterval(obj.timer);
+                obj.timer = setInterval(function () {
+                    var step = (target - obj.offsetLeft) / 10;
+                    step = step < 0 ? Math.floor(step) : Math.ceil(step);
+                    obj.style.left = obj.offsetLeft + step + 'px';
+                }, 30)
+            }
+            btns[0].addEventListener('click', function () {
+                animate(div, 500);
+            })
+            btns[1].addEventListener('click', function () {
+                animate(div, 800);
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <button>点击移动500px</button>
+    <button>点击移动800px</button>
+    <div></div>
+</body>
+
+</html>

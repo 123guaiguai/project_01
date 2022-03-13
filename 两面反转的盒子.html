@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>两面反转的盒子</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            user-select: none;
+        }
+        body{
+            perspective: 500px;
+        }
+        .container{
+            position:relative;
+            width:200px;
+            height:200px;
+            margin:100px auto;
+            border-radius: 50%;
+            transition: all .4s;
+            transform-style: preserve-3d;
+        }
+        .container:hover{
+            transform: rotateY(180deg);
+        }
+        .container .front,
+        .container .back{
+            width:100%;
+            height:100%;
+            position:absolute;
+            top:0;
+            left:0;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 200px;
+            font-size: 20px;
+            color:yellowgreen;
+        }
+        .container .front{
+            background-color: pink;
+            z-index:2;
+        }
+        .container .back{
+            background-color: aqua;
+            transform: rotateY(180deg);
+            z-index:1;
+        }
+        .box{
+            width:200px;
+            height:100px;
+            position:relative;
+            top:0;
+            left:0;
+            margin:20px auto;
+            transition: all .5s;
+            transform-style: preserve-3d;
+        }
+        .box .front,
+        .box .back{
+            width:100%;
+            height:100%;
+            position:absolute;
+            top:0;
+            left:0;
+            font-size:18px;
+            color:beige;
+            text-align: center;
+            line-height: 100px;
+        }
+        .box .front{
+            background-color: cadetblue;
+            z-index:1;
+            transform: translateZ(50px);
+        }
+        .box .back{
+            background-color: aquamarine;
+            transform: translateY(50px) rotateX(-90deg);
+        }
+        .box:hover{
+            transform: rotateX(90deg);
+        }
+    </style>
+    <script>
+        window.addEventListener('load',function(){
+            var container=document.querySelector('.container');
+            container.addEventListener('click',function(){
+                console.log('11');
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="front">曾记花前</div>
+        <div class="back">共说深深愿</div>
+    </div>
+    <div class="box">
+        <div class="front">于道各努力</div>
+        <div class="back">千里自同风</div>
+    </div>
+</body>
+</html>

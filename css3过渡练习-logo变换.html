@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>logo变换</title>
+    <style>
+        .show{
+            width:80px;
+            height:80px;
+            margin:100px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .container{
+            position: absolute;
+            top:0;
+            left:0;
+            width:200%;
+            height:100%;
+            transition: all .3s;
+        }
+        .logo1,
+        .logo2{
+            float:left;
+        }
+        img{
+            width:80px;
+            height:80px;
+        }
+        .container:hover{
+            left:-80px;
+        }
+    </style>
+</head>
+<body>
+    <div class="show">
+        <div class="container">
+            <div class="logo1"><img src="../images/logo2.jpg"></div>
+            <div class="logo2"><img src="../images/logo3.jpg"></div>
+        </div>
+    </div>
+</body>
+</html>

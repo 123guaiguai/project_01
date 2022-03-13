@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/JsQuery_min.js"></script>
+    <script>
+        $(function(){
+            $('#btn').on('click',function(){
+                $.get('http://www.guoxuemeng.com/mingju/429637.html',function(res){
+                    console.log(res);
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    <button class="btn">get获得服务器数据</button>
+</body>
+</html>

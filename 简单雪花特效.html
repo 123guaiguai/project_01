@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简单雪花特效</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body,
+        html {
+            height: 100vh;
+            background-color: black;
+        }
+
+        .snow {
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background-color: aliceblue;
+        }
+    </style>
+    <script>
+        window.addEventListener('load', function () {
+            var windowleft = window.screen.width;
+            var windowtop = window.screen.height;
+            function CreateSnow() {
+                var left = 0;
+                var top = 0;
+                var snowleft = windowleft * Math.random();
+                var snowtop = windowtop * Math.random();
+                var div = document.createElement('div');
+                div.className = 'snow';
+                div.style.transform = 'scale(' + Math.random() + ')'
+                document.body.appendChild(div);
+                setInterval(function () {
+                    div.style.left =snowleft + left + 'px';
+                    div.style.top=snowtop+top+'px';
+                    left+=0.2;
+                    top+=0.2;
+                }, 100)
+            }
+            CreateSnow();
+        })
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
